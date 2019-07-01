@@ -1,6 +1,6 @@
 var fs = require('fs');
-var crawler = require("./crawler");
-var script = require("./script");
+var crawler = require("./src/crawler");
+var script = require("./src/script");
 var jsdom = require('jsdom');
 var path = require("path");
 

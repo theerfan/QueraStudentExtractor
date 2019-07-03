@@ -1,10 +1,11 @@
-var fs = require('fs');
-var crawler = require("./src/crawler");
-var script = require("./src/script");
-var jsdom = require('jsdom');
-var path = require("path");
+const fs = require('fs');
+const crawler = require("./src/htmlGetter");
+const script = require("./src/nodeScript");
+const jsdom = require('jsdom');
+const path = require("path");
 
 let userMode = process.argv[2];
+// let userMode = "offline";
 let document = {};
 let source = process.argv[3];
 // let source = "Quera.htm"
@@ -22,6 +23,9 @@ else {
 
 document = new jsdom.JSDOM(string);
 document = document.window.document;
-people = script(document)
 
-fs.writeFileSync("Students.json", JSON.stringify(people, null, 2));
+script(document).then((humans) => {
+    fs.writeFileSync("Students.json", JSON.stringify(humans, null, 2));
+}).catch((err) => {
+    console.log(err);
+});

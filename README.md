@@ -6,6 +6,9 @@ e.g [Sample Course Students Page](https://quera.ir/overview/course/0000/manage/s
 ## Getting Started
 
 First things first, clone the project to any directory on your local machine that you want.
+```
+git clone https://github.com/theerfan/QueraStudentExtractor.git
+```
 
 ### Prerequisites
 

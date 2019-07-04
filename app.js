@@ -1,31 +1,25 @@
-const fs = require('fs');
-const crawler = require("./src/htmlGetter");
-const script = require("./src/nodeScript");
-const jsdom = require('jsdom');
+
+const crawler = require("./src/queraCrawler");
+const fs =require('fs');
+const writeToFile = require("./src/writeToJSON");
 const path = require("path");
 
+// online, offline
 let userMode = process.argv[2];
-// let userMode = "offline";
-let document = {};
-let source = process.argv[3];
-// let source = "Quera.htm"
-let string = '';
-let people = {};
 
 if (userMode === "online")
 {
-    string = crawler(source);
-    document = jsdom.JSDOM.fromURL(source);
+    email = process.argv[3];
+    password = process.argv[4];
+    courseName = process.argv[5];
+   
+    crawler(email, password, courseName);
 }
 else {
+    source = process.argv[3];
     string = fs.readFileSync(path.join(__dirname, source)).toString();
+    writeToFile(string)
 }
 
-document = new jsdom.JSDOM(string);
-document = document.window.document;
 
-script(document).then((humans) => {
-    fs.writeFileSync("Students.json", JSON.stringify(humans, null, 2));
-}).catch((err) => {
-    console.log(err);
-});
+

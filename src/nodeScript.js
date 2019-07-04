@@ -13,7 +13,7 @@ async function findPeople (document)
         nameTag = currentPersonTags[1];
         emailTag = currentPersonTags[2];
         id = idTag.getElementsByTagName("div")[0].firstElementChild.value;
-        let name = nameTag.textContent.trim().replace(/\d+/, '');
+        let name = nameTag.textContent.trim().replace(/\d+/, '').replace('.', ' ').replace('_', ' ');
         
         if (name.match(/[a-zA-Z]+/))
         {

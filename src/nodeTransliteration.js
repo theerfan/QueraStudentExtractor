@@ -5,7 +5,6 @@ function getTransliteration(word) {
     return new Promise((resolve,reject) => {
         let answer = word;
         let url = encodeURI("https://inputtools.google.com/request?text=" + word + "&itc=fa-t-i0-und");
-        // console.log(url);
         request(url, {json: true}, (err, res, body) => {
             if (err || res.statusCode !== 200)
             {

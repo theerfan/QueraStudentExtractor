@@ -12,7 +12,6 @@ function downloadPage(url) {
     });
 }
 
-
 async function myBackEndLogic(path) {
     try {
         const html = await downloadPage(path)

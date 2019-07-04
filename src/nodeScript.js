@@ -43,6 +43,4 @@ async function findPeople (document)
     return people;
 }
 
-// findPeople("mamad fatemi");
-
 module.exports = findPeople;

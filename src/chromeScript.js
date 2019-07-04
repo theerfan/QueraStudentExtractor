@@ -8,7 +8,7 @@ for (let i=1; i < peopleInTables.length; i++)
     nameTag = currentPersonTags[1];
     emailTag = currentPersonTags[2];
     id = idTag.getElementsByTagName("div")[0].firstElementChild.value;
-    name = nameTag.textContent.trim().replace(/\d+/, '');
+    name = nameTag.textContent.trim().replace(/\d+/, '').replace('.', ' ').replace('_', ' ');
     email = emailTag.getElementsByTagName("div")[0].textContent.trim();
     people[id] = {name, email}
 }
